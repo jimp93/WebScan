@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  <h1>{% block title %}Searching{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label>Searching for changes</label>
+    <button> <a href="/">Stop Search</a></button>
+  </form>
+  <script>
+    var request = new XMLHttpRequest();
+    request.open('POST', '/searching')
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    request.onload = function(){
+      if (request.status ===200 && request.responseText ==='done')
+        <!--{window.location = '/changed';}-->
+        {alert('The website changed');
+        window.location = '/changed';}
+      else {alert('Something went wrong');}
+    }
+    request.send();
+  </script>
+{% endblock %}
+
+
+

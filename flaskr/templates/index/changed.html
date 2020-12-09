@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  <h1>{% block title %}Webpage has changed{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+      <label>Webpage has changed</label>
+       <button> <a href="/">New Search</a></button>
+       <button> <a href="/searching">Search same website</a></button>
+  </form>
+  <label>The following sections were added</label>
+  <p>{{ added }}</p>
+  <label>The following sections were deleted</label>
+  <p>{{ deleted }}</p>
+
+{% endblock %}
