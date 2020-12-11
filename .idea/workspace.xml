@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3dff1fe0-83cc-4da3-a2da-4673c187a4c3" name="Default Changelist" comment="" />
+    <list default="true" id="3dff1fe0-83cc-4da3-a2da-4673c187a4c3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/__init__.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +19,7 @@
         <counts>
           <entry key="project.closed" value="22" />
           <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.30" value="1" />
@@ -31,7 +37,7 @@
           <entry key="project.open.time.66" value="1" />
           <entry key="project.open.time.71" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="23" />
+          <entry key="project.opened" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -40,7 +46,7 @@
           <entry key="css" value="3" />
           <entry key="html" value="13" />
           <entry key="js" value="1" />
-          <entry key="py" value="29" />
+          <entry key="py" value="30" />
           <entry key="sql" value="3" />
         </counts>
       </usages-collector>
@@ -51,7 +57,7 @@
           <entry key="HTML" value="13" />
           <entry key="JavaScript" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="29" />
+          <entry key="Python" value="30" />
           <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
@@ -62,7 +68,7 @@
           <entry key="dummy" value="12" />
           <entry key="html" value="1993" />
           <entry key="js" value="1" />
-          <entry key="py" value="18296" />
+          <entry key="py" value="18309" />
           <entry key="sql" value="49" />
           <entry key="txt" value="38" />
         </counts>
@@ -74,7 +80,7 @@
           <entry key="HTML" value="1993" />
           <entry key="JavaScript" value="1" />
           <entry key="PLAIN_TEXT" value="59" />
-          <entry key="Python" value="18296" />
+          <entry key="Python" value="18309" />
           <entry key="SQL" value="7" />
         </counts>
       </usages-collector>
@@ -85,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskr/index.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+            <state>
+              <caret lean-forward="true" />
               <folding>
                 <element signature="e#0#130#0" expanded="true" />
                 <marker date="1606048071414" expanded="true" signature="1008:1010" ph="..." />
@@ -102,8 +108,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskr/auth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
+            <state relative-caret-position="884">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,18 +122,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
               <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskr/logic.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3417">
-              <caret line="203" column="34" selection-start-line="203" selection-start-column="34" selection-end-line="203" selection-end-column="34" />
-              <folding>
-                <element signature="e#23#37#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -152,11 +149,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskr/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state>
+              <caret lean-forward="true" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wsgi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -165,7 +171,7 @@
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -233,6 +239,7 @@
         <option value="$PROJECT_DIR$/flaskr/logic.py" />
         <option value="$PROJECT_DIR$/flaskr/index.py" />
         <option value="$PROJECT_DIR$/flaskr/__init__.py" />
+        <option value="$PROJECT_DIR$/wsgi.py" />
         <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
@@ -263,7 +270,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,21 +277,17 @@
               <item name="WebScan" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebScan" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="WebScan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebScan" type="462c0819:PsiDirectoryNode" />
-              <item name="flaskr" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -307,7 +309,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.auth">
+  <component name="RunManager" selected="Python.__init__">
     <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="WebScan" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -400,8 +402,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.auth" />
         <item itemvalue="Python.__init__" />
+        <item itemvalue="Python.auth" />
         <item itemvalue="Python.tess" />
         <item itemvalue="Python.index" />
       </list>
@@ -451,8 +453,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" />
@@ -460,12 +463,12 @@
       <window_info id="Job Explorer" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3294271" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3294271" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3294271" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997396" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3294271" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3294271" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
@@ -510,6 +513,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/floating-hollows-40146" />
+    </ignored-roots>
     <MESSAGE value="the works" />
     <MESSAGE value="Adds files" />
     <MESSAGE value="line break" />
@@ -581,35 +587,6 @@
     <entry file="file://$PROJECT_DIR$/flaskr/static/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/flaskr/index.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#130#0" expanded="true" />
-            <marker date="1606048071414" expanded="true" signature="1008:1010" ph="..." />
-            <marker date="1606048071414" expanded="true" signature="1009:1010" ph="..." />
-            <marker date="1606048071414" expanded="true" signature="1253:1262" ph="..." />
-            <marker date="1606048071414" expanded="true" signature="3017:3019" ph="..." />
-            <marker date="1606048071414" expanded="true" signature="3875:4016" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flaskr/auth.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flaskr/templates/index/searching.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flaskr/logic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3417">
@@ -636,16 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flaskr/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flaskr/templates/index/changed.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -660,10 +627,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/auth.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/templates/index/searching.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#0#130#0" expanded="true" />
+            <marker date="1606048071414" expanded="true" signature="1008:1010" ph="..." />
+            <marker date="1606048071414" expanded="true" signature="1009:1010" ph="..." />
+            <marker date="1606048071414" expanded="true" signature="1253:1262" ph="..." />
+            <marker date="1606048071414" expanded="true" signature="3017:3019" ph="..." />
+            <marker date="1606048071414" expanded="true" signature="3875:4016" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
