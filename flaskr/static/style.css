@@ -1,4 +1,4 @@
-html { font-family: sans-serif; background-image: url('/static/bgp.jpg'); -webkit-background-size: cover;
+html { font-family: sans-serif; background-image: url('bgp.jpg'); -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover; padding: 1rem; }
