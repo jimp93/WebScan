@@ -1,17 +1,29 @@
-
-#         message = """\From: From Person <jamespythmail@gmail.com>
-#         To: To Person <james.pheby@afp.com>
-#         Subject: Change to gov website
+# import os
 #
-#         The gov website has been updated
-#         """
-#         context = ssl.create_default_context()
-#         with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-#             server.login("jamespythmail@gmail.com", "Waddler8")
-#             server.sendmail(sender_email, receiver_email, message)
-#             server.sendmail(sender_email, r_email, message)
-#             server.sendmail(sender_email, g_email, message)
-#             server.quit()
+import redis
+from waitress import serve
+import time
+r = redis.Redis(host='localhost', port=6379, charset="utf-8", decode_responses=True)
 
-dog = "1234"
-print(len(dog))
+# from rq import Worker, Queue, Connection
+#
+# listen = ['default']
+#
+# redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
+#
+# conn = redis.from_url(redis_url)
+#
+# if __name__ == '__main__':
+#     with Connection(conn):
+#         worker = Worker(list(map(Queue, listen)))
+#         worker.work()
+#
+
+import uuid
+
+jid = uuid.uuid4()
+
+print(jid)
+
+
+

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <script>
+    let src = "{{url_for('static', filename='winter.mp3')}}";
+    let audio = new Audio(src);
+    audio.play();</script>
+
+  <h1>{% block title %}Webpage has changed{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <label>Webpage has changed</label>
+{% endblock %}

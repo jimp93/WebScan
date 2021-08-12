@@ -1,18 +1,30 @@
 # -*- coding:utf-8 -*-
 import difflib
-from flask import session
-from flaskr.db import get_db
+import requests
+from bs4 import BeautifulSoup
+import time
+import dramatiq
+from dramatiq.brokers.redis import RedisBroker
+from dramatiq.results.backends import RedisBackend
+from dramatiq.results import Results
+import redis
 
 
-def fill_db(ready_a, ready_d):
-    db = get_db()
-    db.execute("delete from texts")
-    db.commit()
-    db.execute('INSERT INTO texts (old_text, new_text) VALUES (?, ?)', (ready_a[0], ready_d[0]))
-    db.commit()
+redis_ = redis.Redis(host='localhost', port=6379, charset="utf-8", decode_responses=True)
+result_backend = RedisBackend(url="redis://127.0.0.1:6379")
+broker = RedisBroker(url="redis://127.0.0.1:6379")
+broker.add_middleware(Results(backend=result_backend))
+dramatiq.set_broker(broker)
 
 
-def realise_real_chunks(old_d, new_d, keys_to_realise_a, keys_to_realise_d, real_spansa, real_spoansd):
+def fill_db(ready_a, ready_d, job_id):
+    old_text = ready_a[0]
+    new_text = ready_d[0]
+    redis_.hset(job_id, 'old_text', old_text)
+    redis_.hset(job_id, 'new_text', new_text)
+
+
+def realise_real_chunks(old_d, new_d, keys_to_realise_a, keys_to_realise_d, real_spansa, real_spoansd, job_id):
     full_filt_dic_o = {}
     full_filt_dic_n = {}
     final_add_ex = []
@@ -66,25 +78,22 @@ def realise_real_chunks(old_d, new_d, keys_to_realise_a, keys_to_realise_d, real
 
     for edd in extended_del:
         sa = "".join(edd)
-        final_del_ex.append("..." + str(sa) + "...")
+        final_del_ex.append("... " + str(sa) + " ...")
 
     for ead in extended_add:
         ram = "".join(ead)
-        final_add_ex.append("..." + str(ram) + "...")
+        final_add_ex.append("... " + str(ram) + " ...")
 
-    fill_db(final_add_ex, final_del_ex)
-    session['tagger'] = 'change'
+    fill_db(final_add_ex, final_del_ex, job_id)
+    redis_.hset(job_id, 'tagger', 'change')
 
 
-def realise_keys(string_ld, string_la, add_no, del_no, new_d, old_d, new_dic, old_dic):
+def realise_keys(string_ld, string_la, add_no, del_no, new_d, old_d, job_id):
     keys_to_realise_a = []
     keys_to_realise_d = []
     real_spansa = []
     real_spansd = []
     stt = 0
-
-    print(string_la)
-    print(add_no)
 
     for la in string_la:
         ct = 0
@@ -143,14 +152,16 @@ def realise_keys(string_ld, string_la, add_no, del_no, new_d, old_d, new_dic, ol
             ctd += 1
         std += ld
         keys_to_realise_d.append(din_list)
-    realise_real_chunks(old_d, new_d, keys_to_realise_a, keys_to_realise_d, real_spansa, real_spansd)
+    realise_real_chunks(old_d, new_d, keys_to_realise_a, keys_to_realise_d, real_spansa, real_spansd, job_id)
 
 
-def chunk_limits(r_p, new_dic, old_dic, new_d, old_d):
-    # works out limits of change chunks, for actual (ie to work out if just numbers) and for presenting extended and filled chunks
+def chunk_limits(r_p, new_dic, old_dic, new_d, old_d, job_id):
 
-    def evaluate(add_nov, del_nov, string_la, string_ld):
-        if session['numbers'] == 'no':
+    # works out limits of change chunks, for actual (ie to work out if just numbers) and for presenting extended
+    #  and filled chunks
+
+    def evaluate():
+        if redis_.hget(job_id, 'numbers') == 'no':
             a_chunked = []
             d_chunked = []
             afirst = 0
@@ -208,9 +219,6 @@ def chunk_limits(r_p, new_dic, old_dic, new_d, old_d):
                     if len(rd) == len(comparer_d):
                         all_no_d_constructor.append(rd)
 
-            print(a_chunked)
-            print(d_chunked)
-
             if all_no_a_constructor:
                 for ita in all_no_a_constructor:
                     if ita in a_chunked:
@@ -222,18 +230,15 @@ def chunk_limits(r_p, new_dic, old_dic, new_d, old_d):
                         y = d_chunked.index(itd)
                         d_chunked.pop(y)
 
-            print(a_chunked)
-            print(d_chunked)
-
             if d_chunked or a_chunked:
-                chunk_limits('p', new_dic, old_dic, new_d, old_d)
+                chunk_limits('p', new_dic, old_dic, new_d, old_d, job_id)
 
             else:
                 print('no')
-                session['tagger'] = 'carry on'
+                redis_.hset(job_id, 'tagger', 'carry_on')
 
         else:
-            chunk_limits('p', new_dic, old_dic, new_d, old_d)
+            chunk_limits('p', new_dic, old_dic, new_d, old_d, job_id)
 
     string_la = []
     string_ld = []
@@ -288,12 +293,12 @@ def chunk_limits(r_p, new_dic, old_dic, new_d, old_d):
         string_ld.append(1)
 
     if r_p == 'r':
-        evaluate(add_nov, del_nov, string_la, string_ld)
+        evaluate()
     if r_p == 'p':
-        realise_keys(string_ld, string_la, add_no, del_no, new_d, old_d, new_dic, old_dic)
+        realise_keys(string_ld, string_la, add_no, del_no, new_d, old_d, job_id)
 
 
-def make_ad_dic(old_text, new_text):
+def make_ad_dic(old_text, new_text, job_id):
     # make dic of added, deleted chars and their position
 
     hmm = {}
@@ -332,5 +337,37 @@ def make_ad_dic(old_text, new_text):
             if new_d[eee][0] == "+":
                 new_dic[eee] = new_d[eee][2]
 
-    chunk_limits('r', new_dic, old_dic, new_d, old_d)
+    chunk_limits('r', new_dic, old_dic, new_d, old_d, job_id)
+
+
+@dramatiq.actor
+def start_logic(url, numbers, rrtime, jid):
+    job_id=jid
+    redis_.hset(job_id, 'numbers', numbers)
+    redis_.hset(job_id, 'tagger', 'no_change')
+    new_text = []
+    old_text = []
+    while True:
+        headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+        response = requests.get(url, headers=headers)# gets webpage using differnt browsers
+        soup = BeautifulSoup(response.text, features="html.parser")#returns the whole page
+        for script in soup(["script", "style"]):  # remove all javascript and stylesheet code
+            script.extract()
+        text = soup.get_text()#gets text of what is left
+        lines = (line.strip() for line in text.splitlines())# breaks block into lines where \ and removes leading and trailing space on each
+        chunks = (phrase.strip() for line in lines for phrase in line.split("  "))# break multi-headlines into a line each
+        text = '\n'.join(chunk for chunk in chunks if chunk) # drop blank lines
+        new_text.append(text)
+        if old_text:
+            if new_text != old_text:
+                make_ad_dic(old_text[0], new_text[0], job_id)
+                if redis_.hget(job_id, 'tagger') == 'change':
+                    break
+        old_text = []
+        old_text.append(text)
+        new_text = []
+        rtime = int(rrtime)
+        time.sleep(rtime)
+    return 'done'
+
 

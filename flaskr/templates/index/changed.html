@@ -1,21 +1,38 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  <h1>{% block title %}Webpage has changed{% endblock %}</h1>
-{% endblock %}
+<head>
+    <script>
+        $(document).ready(function(){
+            $("#openModal").modal('show');
+        });
+    </script>
+</head>
 
 {% block content %}
+
+<audio id="myaud" src="{{url_for('static', filename='winter.mp3')}}" muted preload="auto"></audio>
+<input type="hidden"  id="aud" value="{{ aud }}">
+<script>
+    var aud = document.getElementById('aud').value;
+    if (aud=='yes') {
+        var ad = document.getElementById('myaud');
+        ad.play();
+        ad.muted = false;
+    }
+</script>
+
   <form method="post">
       <label>Webpage has changed</label>
        <button> <a href="/">New Search</a></button>
-       <button> <a href="/searching">Search same website</a></button>
   </form>
   <label>The following sections were added</label>
-  <p>{{ added }}</p>
+<p> {{a1}} <span style="color:red;"><strong>{{cha}}</strong></span> {{a2}} </p>
+
   <label>The following sections were deleted</label>
-  <p>{{ deleted }}</p>
+  <p> {{d1}} <span style="color:red;"><strong>{{chd}}</strong></span> {{d2}} </p>
+
+  <script>
+    setTimeout(function() { alert("Website has changed"); }, 500);
+  </script>
 
 {% endblock %}

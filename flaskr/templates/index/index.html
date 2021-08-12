@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 
 {% block header %}
+
 <h1>{% block title %}Enter your website{% endblock %}</h1>
 
 {% endblock %}
 
 
 {% block content1 %}
-<form method = post>
+<form method = post data-ng-app="WebScanApp" data-ng-controller="WebScanController" data-ng-submit="getResults()">
+
     <table width = 100%>
         <tr >
           <td rowspan="1" colspan="2">Enter your website</td>
           <td rowspan="1" colspan="4"> <input size="80" id="website" type="text" name="website" title="website address"
-                                              required align="right"/></td>
+                                              required align="right" data-ng-model="website"/></td>
         </tr>
 
         <tr>
@@ -35,6 +37,7 @@
 
         <tr>
             <td rowspan="2" colspan="2"><label>Please select your refresh time</label></td>
+            <td rowspan="1" colspan="1"><label>10 Seconds</label></td>
             <td rowspan="1" colspan="1"><label>30 Seconds</label></td>
             <td rowspan="1" colspan="1"><label>2 Minutes</label></td>
             <td rowspan="1" colspan="1"><label>1 Hour</label></td>
@@ -42,10 +45,13 @@
         </tr>
 
         <tr>
-            <td rowspan="1" colspan="1"><input required id="30s" type="radio" name="time" value=30></td>
-            <td rowspan="1" colspan="1"><input id="2Mins" type="radio" name="time" value=120></td>
-            <td rowspan="1" colspan="1"><input id="1Hour" type="radio" name="time" value=3600></td>
-            <td rowspan="1" colspan="1"><input id="1Day" type="radio" name="time" value=86400></td>
+            <td rowspan="1" colspan="1"><input required id="10s" type="radio" name="time"
+                                               value=10 data-ng-model="time"></td>
+            <td rowspan="1" colspan="1"><input required id="30s" type="radio" name="time"
+                                               value=30 data-ng-model="time"></td>
+            <td rowspan="1" colspan="1"><input id="2Mins" type="radio" name="time" value=120 data-ng-model="time"></td>
+            <td rowspan="1" colspan="1"><input id="1Hour" type="radio" name="time" value=3600 data-ng-model="time"></td>
+            <td rowspan="1" colspan="1"><input id="1Day" type="radio" name="time" value=86400 data-ng-model="time"></td>
         </tr>
 
         <tr>
@@ -64,8 +70,29 @@
         </tr>
 
         <tr>
-            <td rowspan="1" colspan="1"><input required id="Yes" type="radio" name="numbers" value=yes></td>
-            <td rowspan="1" colspan="1"><input id="No" type="radio" name="numbers" value=no></td>
+            <td rowspan="1" colspan="1"><input required id="Yes" type="radio" name="numbers"
+                                               value=yes data-ng-model="numbers"></td>
+            <td rowspan="1" colspan="1"><input id="No" type="radio" name="numbers"
+                                               value=no data-ng-model="numbers"></td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+
+        <tr>
+            <td rowspan="2" colspan="2"><label>Do you want sound notification?</label></td>
+            <td rowspan="1" colspan="1"><label>Yes</label></td>
+            <td rowspan="1" colspan="1"><label>No</label></td>
+        </tr>
+
+        <tr>
+            <td rowspan="1" colspan="1"><input required id="YesA" type="radio" name="audio"
+                                               value=yes data-ng-model="audio"></td>
+            <td rowspan="1" colspan="1"><input id="NoA" type="radio" name="audio"
+                                               value=no data-ng-model="audio"></td>
         </tr>
         <tr>
         </tr>
@@ -74,9 +101,8 @@
         <tr>
         </tr>
         <tr>
-        </tr>
-        <tr>
-        <td><label><input type ="submit" value="Submit"></label>
+        <td><button type ="submit" class="btn btn-primary"
+                          data-ng-disabled="loading">{a submitButtonText a}</button>
         </tr>
     </table>
 </form>

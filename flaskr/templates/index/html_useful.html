@@ -1,0 +1,30 @@
+
+  <script>
+    <!--makes an object that can make client browser call URL on server-->
+
+    var request = new XMLHttpRequest();
+
+    <!-- tells object to trigger the view function when sent-->
+
+    request.open('POST', '/searching')
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    <!-- When view function return is reached, the response is sent to client and document considered to be loaded-->
+    <!--the below JS function is then called (view function returns text 'done' when condition is met) -->
+    <!--the function calls another URL on the server-->
+    <!--The window.location object can be used to redirect the browser to a new page.-->
+
+    request.onload = function(){
+      if (request.status ===200 && request.responseText ==='done')
+        {alert('The website changed');
+        window.location = '/changed';}
+      else {alert('Something went wrong');}
+    }
+
+    <!--activate the object to make request-->
+    request.send();
+  </script>
+{% endblock %}
+
+
+
